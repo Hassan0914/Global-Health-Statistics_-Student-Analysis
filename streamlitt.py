@@ -26,8 +26,9 @@ elif page == "Page 2":
     import pages.page_2
 elif page == "Page 3":
     import pages.page_3
+st.markdown("<h1 style='font-size:36px;'>Select a chart to display</h1>", unsafe_allow_html=True)
 
-chart_option = st.selectbox("Select a chart to display:", [
+chart_option = st.selectbox("Select a chart", [
     "Bar Chart: Population Affected",
     "Box Plot: Treatment Cost",
     "Histogram: Mortality Rate",
@@ -61,8 +62,9 @@ elif chart_option == "bubble_chart: hospital_beds_vs_healthcare":
 
 st.markdown("<br><br><br><br><br>", unsafe_allow_html=True)
 #Apply ML Models
-file_path = "Global Health Statistics.csv"
-df = pd.read_csv(file_path)
+
+st.markdown("<h1 style='font-size:36px;'>Machine Learning Model of Linear Regression</h1>", unsafe_allow_html=True)
+st.markdown("<p style='font-size:24px;'>Test the model</p>", unsafe_allow_html=True)
 
 available_columns = df.select_dtypes(include=['number']).columns.tolist()
 total_features = st.number_input("Total Features:", min_value=1, max_value=len(available_columns), step=1, value=2)
@@ -72,7 +74,7 @@ features = st.multiselect(
     available_columns,
     default=available_columns[:total_features] 
 )
-
+file_path = "Global Health Statistics.csv"
 target = st.selectbox("Select Target Feature:", available_columns)
 
 if len(features) > 0 and target:
@@ -85,12 +87,14 @@ if len(features) > 0 and target:
 
     st.write("Model Evaluation Metrics:")
     st.write(metrics)
+    st.markdown("<h1 style='font-size:30px;'>Make a Prediction</h1>", unsafe_allow_html=True)
 
-    st.write("Make a Prediction:")
+    
     input_values = [st.number_input(f"Enter value for {feature}:", value=0.0) for feature in features]
     if st.button("Predict"):
         prediction = model.predict([input_values])
-        st.write(f"Prediction: {prediction[0]}")
+        st.markdown(f"<h1 style='font-size:30px;'>Prediction {prediction[0]:.4f}</h1>", unsafe_allow_html=True)
+        
 else:
     st.write("Please select features and target.")
 
