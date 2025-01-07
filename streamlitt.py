@@ -101,7 +101,7 @@ else:
 
 
 """
-python -m streamlit run "d:/Semester 5/Intro to Data Science/IDS Project/streamlitt.py"
+python -m streamlit run "d:/Semester 5/Intro to Data Science/Global Health Statistics_ Student Analysis/streamlitt.py"
 
 """
 
